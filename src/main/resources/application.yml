@@ -1,0 +1,33 @@
+# springboot 核心配置文件
+
+# tomcat 端口号
+server:
+  port: 8888
+
+
+spring:
+  profiles: default
+  freemarker:
+    cache: false
+    content-type: text/html;charset=utf-8
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    suffix: .ftl
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: 123456
+
+  #静态资源
+  resources:
+    static-locations: classpath:/static/
+
+#自定义的常量
+app:
+  msg: hello,${app.username},${app.number},${app.port}
+  username: lalala
+  number: ${random.int}
+  port: ${random.int[1024,9999]}
